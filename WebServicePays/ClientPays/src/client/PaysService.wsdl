@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax23="http://models/xsd" xmlns:ns="http://service" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax21="http://meserreurs/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" targetNamespace="http://service">
+    <wsdl:documentation>
+        Please Type your service description here
+    </wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://models/xsd">
+            <xs:complexType name="Pays">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="nbHabitants" nillable="true" type="xs:integer"/>
+                    <xs:element minOccurs="0" name="nomCapitale" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="nomContinent" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="nomPays" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://meserreurs/xsd">
+            <xs:complexType name="MonException">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="unType" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="unmessage" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax22="http://meserreurs/xsd" xmlns:ax24="http://models/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service">
+            <xs:import namespace="http://meserreurs/xsd"/>
+            <xs:import namespace="http://models/xsd"/>
+            <xs:element name="startTransaction">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="startTransactionResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:anyType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PaysServiceMonException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="MonException" nillable="true" type="ax22:MonException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="consulterPays">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="nom" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="consulterPaysResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax24:Pays"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="consulterListePays">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="consulterListePaysResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax24:Pays"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="startTransactionRequest">
+        <wsdl:part name="parameters" element="ns:startTransaction"/>
+    </wsdl:message>
+    <wsdl:message name="startTransactionResponse">
+        <wsdl:part name="parameters" element="ns:startTransactionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="consulterPaysRequest">
+        <wsdl:part name="parameters" element="ns:consulterPays"/>
+    </wsdl:message>
+    <wsdl:message name="consulterPaysResponse">
+        <wsdl:part name="parameters" element="ns:consulterPaysResponse"/>
+    </wsdl:message>
+    <wsdl:message name="PaysServiceMonException">
+        <wsdl:part name="parameters" element="ns:PaysServiceMonException"/>
+    </wsdl:message>
+    <wsdl:message name="consulterListePaysRequest">
+        <wsdl:part name="parameters" element="ns:consulterListePays"/>
+    </wsdl:message>
+    <wsdl:message name="consulterListePaysResponse">
+        <wsdl:part name="parameters" element="ns:consulterListePaysResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="PaysServicePortType">
+        <wsdl:operation name="startTransaction">
+            <wsdl:input message="ns:startTransactionRequest" wsaw:Action="urn:startTransaction"/>
+            <wsdl:output message="ns:startTransactionResponse" wsaw:Action="urn:startTransactionResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="consulterPays">
+            <wsdl:input message="ns:consulterPaysRequest" wsaw:Action="urn:consulterPays"/>
+            <wsdl:output message="ns:consulterPaysResponse" wsaw:Action="urn:consulterPaysResponse"/>
+            <wsdl:fault message="ns:PaysServiceMonException" name="PaysServiceMonException" wsaw:Action="urn:consulterPaysPaysServiceMonException"/>
+        </wsdl:operation>
+        <wsdl:operation name="consulterListePays">
+            <wsdl:input message="ns:consulterListePaysRequest" wsaw:Action="urn:consulterListePays"/>
+            <wsdl:output message="ns:consulterListePaysResponse" wsaw:Action="urn:consulterListePaysResponse"/>
+            <wsdl:fault message="ns:PaysServiceMonException" name="PaysServiceMonException" wsaw:Action="urn:consulterListePaysPaysServiceMonException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="PaysServiceSoap11Binding" type="ns:PaysServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="startTransaction">
+            <soap:operation soapAction="urn:startTransaction" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="consulterPays">
+            <soap:operation soapAction="urn:consulterPays" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="PaysServiceMonException">
+                <soap:fault use="literal" name="PaysServiceMonException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="consulterListePays">
+            <soap:operation soapAction="urn:consulterListePays" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="PaysServiceMonException">
+                <soap:fault use="literal" name="PaysServiceMonException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="PaysServiceSoap12Binding" type="ns:PaysServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="startTransaction">
+            <soap12:operation soapAction="urn:startTransaction" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="consulterPays">
+            <soap12:operation soapAction="urn:consulterPays" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="PaysServiceMonException">
+                <soap12:fault use="literal" name="PaysServiceMonException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="consulterListePays">
+            <soap12:operation soapAction="urn:consulterListePays" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="PaysServiceMonException">
+                <soap12:fault use="literal" name="PaysServiceMonException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="PaysServiceHttpBinding" type="ns:PaysServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="startTransaction">
+            <http:operation location="startTransaction"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="consulterPays">
+            <http:operation location="consulterPays"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+            <wsdl:fault name="PaysServiceMonException"/>
+        </wsdl:operation>
+        <wsdl:operation name="consulterListePays">
+            <http:operation location="consulterListePays"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+            <wsdl:fault name="PaysServiceMonException"/>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="PaysService">
+        <wsdl:port name="PaysServiceHttpSoap11Endpoint" binding="ns:PaysServiceSoap11Binding">
+            <soap:address location="http://localhost:8080/services/PaysService.PaysServiceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="PaysServiceHttpSoap12Endpoint" binding="ns:PaysServiceSoap12Binding">
+            <soap12:address location="http://localhost:8080/services/PaysService.PaysServiceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="PaysServiceHttpEndpoint" binding="ns:PaysServiceHttpBinding">
+            <http:address location="http://localhost:8080/services/PaysService.PaysServiceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

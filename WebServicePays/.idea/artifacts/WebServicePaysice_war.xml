@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="WebServicePaysice:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="WebServicePaysice-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="WebServicePaysice:war exploded" />
+    </root>
+  </artifact>
+</component>
