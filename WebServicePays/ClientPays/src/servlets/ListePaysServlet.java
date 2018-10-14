@@ -7,6 +7,7 @@ import org.apache.axis2.AxisFault;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -29,12 +30,9 @@ public class ListePaysServlet extends HttpServlet {
             service = new PaysServiceStub();
             PaysServiceStub.ConsulterListePays consulterListePays= new PaysServiceStub.ConsulterListePays();
             PaysServiceStub.ConsulterListePaysResponse consulterListePaysResponse ;
-            List<PaysServiceStub.Pays> listPays = new ArrayList<>();
             consulterListePaysResponse = service.consulterListePays(consulterListePays);
             PaysServiceStub.Pays[] tabPays = consulterListePaysResponse.get_return();
-            for (PaysServiceStub.Pays pays : tabPays) {
-                listPays.add(pays);
-            }
+            List<PaysServiceStub.Pays> listPays = new ArrayList<>(Arrays.asList(tabPays));
             request.setAttribute("listePays", listPays);
 
             this.getServletContext().getRequestDispatcher("/listePays.jsp").forward(request, response);

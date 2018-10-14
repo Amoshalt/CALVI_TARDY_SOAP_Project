@@ -43,7 +43,7 @@
 						</tr>
 						<tr>
 							<td>
-								Nombre d'habitants:
+								Nombre habitants:
 							</td>
 							<td>
 								<%=pays.getNbHabitants()%>
