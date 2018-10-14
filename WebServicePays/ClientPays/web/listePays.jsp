@@ -18,8 +18,10 @@
 <body>
 	<div class="container">
 		<h1>Liste des pays</h1>
-		<h3>Sélectionnez la destination de vos rêves</h3>
-		<table class="table table-hover">
+		<h3>Sélectionnez ou recherchez la destination de vos rêves</h3>
+		<input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Recherchez un pays ou un continent...">
+
+		<table id="myTable" class="table table-hover">
 			<thead>
 			<th>Pays</th>
 			<th>Continent</th>
@@ -51,3 +53,28 @@
 	</div>
 </body>
 </html>
+
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, tdPays, tdContinent, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            tdPays = tr[i].getElementsByTagName("td")[0];
+            tdContinent = tr[i].getElementsByTagName("td")[1];
+            if (tdPays && tdContinent) {
+                if (tdPays.innerHTML.toUpperCase().indexOf(filter) > -1
+				|| tdContinent.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
