@@ -18,6 +18,7 @@
 <body>
 	<div class="container">
 		<h1>Liste des pays</h1>
+		<h3>Sélectionnez la destination de vos rêves</h3>
 		<table class="table table-hover">
 			<thead>
 			<th>Pays</th>
