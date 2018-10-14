@@ -17,8 +17,6 @@
 <body>
 	<jsp:include page='/navbar.jsp'/>
 	<div class="container">
-		<a type="button" href="listePays" class="btn btn-info">Retour liste</a>
-
 		<div class="row" style=" margin-left: 10px; margin-bottom: 20px; margin-top: 20px;: ">
 			<h1><%=pays.getNomPays()%></h1>
 		</div>

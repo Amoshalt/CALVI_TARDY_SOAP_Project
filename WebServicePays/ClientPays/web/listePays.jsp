@@ -23,7 +23,7 @@
 			<thead>
 			<th>Pays</th>
 			<th>Continent</th>
-			<th>Description</th>
+			<th></th>
 			</thead>
 			<tbody>
 			<%
@@ -38,7 +38,7 @@
 					<%=p.getNomContinent()%>
 				</td>
 				<td>
-					<a href='pays?nom=<%=p.getNomPays()%>'><span class="glyphicon glyphicon-search"></span></a>
+					<a href='pays?nom=<%=p.getNomPays()%>' style="text-decoration:none;">Rechercher  <span class="glyphicon glyphicon-search"></span></a>
 				</td>
 			</tr>
 			<%

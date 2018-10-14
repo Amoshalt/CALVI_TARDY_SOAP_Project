@@ -18,11 +18,12 @@
 <body>
 	<div class="container">
 		<h1>Liste des pays</h1>
+		<h3>Sélectionnez la destination de vos rêves</h3>
 		<table class="table table-hover">
 			<thead>
 			<th>Pays</th>
 			<th>Continent</th>
-			<th>Description</th>
+			<th></th>
 			</thead>
 			<tbody>
 			<%
@@ -37,7 +38,7 @@
 					<%=p.getNomContinent()%>
 				</td>
 				<td>
-					<a href='pays?nom=<%=p.getNomPays()%>'><span class="glyphicon glyphicon-search"></span></a>
+					<a href='pays?nom=<%=p.getNomPays()%>' style="text-decoration:none;">Rechercher  <span class="glyphicon glyphicon-search"></span></a>
 				</td>
 			</tr>
 			<%
