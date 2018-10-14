@@ -13,7 +13,7 @@
 <body>
 	<jsp:include page='/navbar.jsp'/>
 	<div class="container">
-		<h1>TP Pays SOAP</h1>
+		<h1>Gestion des Pays SOAP</h1>
 		<br>
 		<h3> Alexis Calvi</h3>
 		<h3> Martial Tardy</h3>
