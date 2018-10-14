@@ -18,8 +18,8 @@
 <body>
 	<div class="container">
 		<h1>Liste des pays</h1>
-		<h3>Sélectionnez la destination de vos rêves</h3>
-		<input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search for names..">
+		<h3>Sélectionnez ou recherchez la destination de vos rêves</h3>
+		<input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Recherchez un pays ou un continent...">
 
 		<table id="myTable" class="table table-hover">
 			<thead>
